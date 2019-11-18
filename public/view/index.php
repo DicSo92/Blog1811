@@ -36,10 +36,16 @@ $Parsedown = new Parsedown();
                             <div class="card-body px-3">
                                 <p class="card-text"><?php echo $Parsedown->text($article['contenu'])?></p>
                             </div>
-                            <div class="card-footer d-flex justify-content-end">
-                                <a class="btn btn-success px-2 py-1 mr-1" href="?page=new_article&article_id=<?php echo $article['id']; ?>">Modifier</a>
-                                <a class="btn btn-warning px-2 py-1 mr-1" href="?state=export&article_id=<?php echo $article['id']; ?>">Exporter</a>
-                                <a class="btn btn-danger px-2 py-1 mr-1" href="?state=delete&article_id=<?php echo $article['id']; ?>">Supprimer</a>
+                            <div class="card-footer d-flex justify-content-between align-items-center">
+                                <p class="m-0">
+                                    <?php $datetime = Carbon::createFromFormat('Y-m-d H:i:s', $article['date']);
+                                    echo $datetime->diffForHumans();?>
+                                </p>
+                                <div class="d-flex">
+                                    <a class="btn btn-success px-2 py-1 mr-1" href="?page=new_article&article_id=<?php echo $article['id']; ?>">Modifier</a>
+                                    <a class="btn btn-warning px-2 py-1 mr-1" href="?state=export&article_id=<?php echo $article['id']; ?>">Exporter</a>
+                                    <a class="btn btn-danger px-2 py-1 mr-1" href="?state=delete&article_id=<?php echo $article['id']; ?>">Supprimer</a>
+                                </div>
                             </div>
                         </div>
                     <?php endforeach; ?>

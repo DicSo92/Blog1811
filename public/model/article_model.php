@@ -16,7 +16,7 @@ function generateArticle(){
 
 function createArticle(){
     $db = dbConnect();
-    $reqPrep = $db->prepare("INSERT INTO article (id, auteur, contenu,date, title) VALUES (default,?,?,NOW(),?)");
+    $reqPrep = $db->prepare("INSERT INTO article (id, auteur, contenu, date, title) VALUES (default,?,?,NOW(),?)");
     $reqPrep->execute(array($_POST['author'], $_POST['content'],$_POST['title']));
     header('location:index.php');
     exit();
